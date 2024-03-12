@@ -11,15 +11,18 @@ export function CardGame() {
   const [currentPack, setCurrentPack] = useState([...shuffledPack]);
   console.log({ currentPack });
   const [previousCards, setPreviousCards] = useState([]);
+  const [prediction, setPrediction] = useState(null);
 
   function clickedHigher() {
     console.log("Higher clicked");
     flipNewCard();
+    setPrediction("higher");
   }
 
   function clickedLower() {
     console.log("Lower clicked");
     flipNewCard();
+    setPrediction("lower");
   }
 
   function flipNewCard() {
@@ -33,6 +36,9 @@ export function CardGame() {
     setCurrentPack(newPack);
   }
 
+  const isGameOver =
+    prediction === "higher" && currentCard.value >= previousCards[0].value;
+
   return (
     <div>
       <button onClick={clickedHigher}>Higher!</button>
@@ -42,9 +48,17 @@ export function CardGame() {
       {currentPack.map((card) => card.id).join(", ")}
       <hr />
       {previousCards.map((card) => card.id).join(", ")}
-
       <hr />
       <button onClick={clickedLower}>Lower!</button>
+      <hr />
+      You predicted {prediction}
+      {isGameOver ? (
+        <div>
+          <h1>GAME OVER YOU LOSE</h1>
+        </div>
+      ) : (
+        <div>Keep on going, see if you can win!</div>
+      )}
     </div>
   );
 }
