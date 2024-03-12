@@ -34,7 +34,7 @@ export function CardGame() {
     setCurrentCard(newCard);
     setCurrentPack(newPack);
   }
-function calculateIsGameOver() {
+function calculatePlayerLost() {
   if (prediction === "higher") {
     return currentCard.value <= previousCards[0].value;
   } else if (prediction === "lower") {
@@ -44,29 +44,52 @@ function calculateIsGameOver() {
   }
 }
 
-const isGameOver = calculateIsGameOver();
-    
+function allRoundsCompleted() {
+  if (previousCards.length >= 3) {
+    return true;
+  } else {
+    return false;
+  }
+}
+/**
+ * @returns {"victory" | "progressing" | "defeat"}
+ */
+function calculateWinState() {
+  if (calculatePlayerLost()) {
+    return "defeat";
+  } else if (allRoundsCompleted()) {
+    return "victory";
+  } else {
+    return "progressing";
+  }
+}
 
-  return (
-    <div>
-      <button onClick={clickedHigher}>Higher!</button>
-      <hr />
-      {currentCard.id}
-      <hr />
-      {currentPack.map((card) => card.id).join(", ")}
-      <hr />
-      {previousCards.map((card) => card.id).join(", ")}
-      <hr />
-      <button onClick={clickedLower}>Lower!</button>
-      <hr />
-      You predicted {prediction}
-      {isGameOver ? (
-        <div>
-          <h1>GAME OVER YOU LOSE</h1>
-        </div>
-      ) : (
-        <div>Keep on going, see if you can win!</div>
-      )}
-    </div>
-  );
+const winState = calculateWinState();
+
+return (
+  <div>
+    <button onClick={clickedHigher}>Higher!</button>
+    <hr />
+    {currentCard.id}
+    <hr />
+    {currentPack.map((card) => card.id).join(", ")}
+    <hr />
+    {previousCards.map((card) => card.id).join(", ")}
+    <hr />
+    <button onClick={clickedLower}>Lower!</button>
+    <hr />
+    {prediction !== null && <p>You predicted {prediction}</p>}
+    {winState === "defeat" && (
+      <div>
+        <h1>GAME OVER YOU LOSE</h1>
+      </div>
+    )}
+    {winState === "victory" && (
+      <div>
+        <h2>🥳🥳🥳YOU SOMEHOW WON!🥳🥳🥳</h2>
+      </div>
+    )}
+    {winState === "progressing" && <div>Pick higher or lower!</div>}
+  </div>
+);
 }
