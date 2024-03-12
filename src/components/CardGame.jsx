@@ -28,7 +28,6 @@ export function CardGame() {
   function flipNewCard() {
     const newPreviousCards = [currentCard, ...previousCards];
     setPreviousCards(newPreviousCards);
-
     const newCard = currentPack[0];
     const newPack = currentPack.slice(1);
     console.log({ newPack, currentPack });
