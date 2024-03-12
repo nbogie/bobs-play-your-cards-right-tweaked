@@ -5,15 +5,18 @@ import _ from "lodash";
 export function CardGame() {
   console.log("cardgame rendered");
   const shuffledPack = _.sampleSize(cardDeckArray, 52);
-  const [currentPack, setCurrentPack] = useState(shuffledPack);
+  const initialFirstCard = shuffledPack.shift();
+  const [currentCard, setCurrentCard] = useState(initialFirstCard);
+  console.log({ currentCard });
+  const [currentPack, setCurrentPack] = useState([...shuffledPack]);
   console.log({ currentPack });
 
   function clickedHigher() {
     console.log("Higher clicked");
-    //q: how to remove the first card from the pack?
-    //a: use the slice method
+    const newCard = currentPack[0];
     const newPack = currentPack.slice(1);
     console.log({ newPack, currentPack });
+    setCurrentCard(newCard);
     setCurrentPack(newPack);
   }
 
@@ -24,7 +27,9 @@ export function CardGame() {
   return (
     <div>
       <button onClick={clickedHigher}>Higher!</button>
-      <br></br>
+      <hr />
+      {currentCard.id}
+      <br />
       {currentPack[0].id}
       {currentPack[1].id}
       {currentPack[2].id}
