@@ -34,9 +34,18 @@ export function CardGame() {
     setCurrentCard(newCard);
     setCurrentPack(newPack);
   }
+function calculateIsGameOver() {
+  if (prediction === "higher") {
+    return currentCard.value <= previousCards[0].value;
+  } else if (prediction === "lower") {
+    return currentCard.value >= previousCards[0].value;
+  } else {
+    return false;
+  }
+}
 
-  const isGameOver =
-    prediction === "higher" && currentCard.value >= previousCards[0].value;
+const isGameOver = calculateIsGameOver();
+    
 
   return (
     <div>
