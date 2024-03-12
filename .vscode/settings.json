@@ -1,0 +1,6 @@
+{
+    // Disable semantic checking of JavaScript files in this project.
+    // The default TS checks this option would enable complain a lot about the standard vite project, confusing beginners.
+    // (Existing `jsconfig.json` or `tsconfig.json` files can override this setting)
+    "js/ts.implicitProjectConfig.checkJs": false
+}

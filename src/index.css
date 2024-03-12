@@ -1,0 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
+.weird {
+    border: 4px dashed lime;
+}

@@ -1,0 +1,134 @@
+[
+    {
+        "id": 4998,
+        "url": "https://www.tvmaze.com/episodes/4998/the-simpsons-1x01-simpsons-roasting-on-an-open-fire",
+        "name": "Simpsons Roasting on an Open Fire",
+        "season": 1,
+        "number": 1,
+        "type": "regular",
+        "airdate": "1989-12-17",
+        "airtime": "20:00",
+        "airstamp": "1989-12-18T01:00:00+00:00",
+        "runtime": 30,
+        "rating": { "average": 7.7 },
+        "image": {
+            "medium": "https://static.tvmaze.com/uploads/images/medium_landscape/489/1223249.jpg",
+            "original": "https://static.tvmaze.com/uploads/images/original_untouched/489/1223249.jpg"
+        },
+        "summary": "<p>Homer's Christmas bonus is canceled and the rainy-day funds are needed to pay for Bart's tattoo removal in the first full-length episode of the subversive animated satire about Springfield's hapless first family.</p>",
+        "_links": {
+            "self": { "href": "https://api.tvmaze.com/episodes/4998" },
+            "show": { "href": "https://api.tvmaze.com/shows/83" }
+        }
+    },
+    {
+        "id": 4999,
+        "url": "https://www.tvmaze.com/episodes/4999/the-simpsons-1x02-bart-the-genius",
+        "name": "Bart the Genius",
+        "season": 1,
+        "number": 2,
+        "type": "regular",
+        "airdate": "1990-01-14",
+        "airtime": "20:00",
+        "airstamp": "1990-01-15T01:00:00+00:00",
+        "runtime": 30,
+        "rating": { "average": 7.3 },
+        "image": {
+            "medium": "https://static.tvmaze.com/uploads/images/medium_landscape/489/1223250.jpg",
+            "original": "https://static.tvmaze.com/uploads/images/original_untouched/489/1223250.jpg"
+        },
+        "summary": "<p>Bart is moved to a school for the gifted after he switches aptitude tests with another boy. </p>",
+        "_links": {
+            "self": { "href": "https://api.tvmaze.com/episodes/4999" },
+            "show": { "href": "https://api.tvmaze.com/shows/83" }
+        }
+    },
+    {
+        "id": 5000,
+        "url": "https://www.tvmaze.com/episodes/5000/the-simpsons-1x03-homers-odyssey",
+        "name": "Homer's Odyssey",
+        "season": 1,
+        "number": 3,
+        "type": "regular",
+        "airdate": "1990-01-21",
+        "airtime": "20:00",
+        "airstamp": "1990-01-22T01:00:00+00:00",
+        "runtime": 30,
+        "rating": { "average": 7.5 },
+        "image": {
+            "medium": "https://static.tvmaze.com/uploads/images/medium_landscape/489/1223252.jpg",
+            "original": "https://static.tvmaze.com/uploads/images/original_untouched/489/1223252.jpg"
+        },
+        "summary": "<p>After being fired from the nuclear power plant for negligence, Homer becomes a safety activist.</p>",
+        "_links": {
+            "self": { "href": "https://api.tvmaze.com/episodes/5000" },
+            "show": { "href": "https://api.tvmaze.com/shows/83" }
+        }
+    },
+    {
+        "id": 5001,
+        "url": "https://www.tvmaze.com/episodes/5001/the-simpsons-1x04-theres-no-disgrace-like-home",
+        "name": "There's No Disgrace Like Home",
+        "season": 1,
+        "number": 4,
+        "type": "regular",
+        "airdate": "1990-01-28",
+        "airtime": "20:00",
+        "airstamp": "1990-01-29T01:00:00+00:00",
+        "runtime": 30,
+        "rating": { "average": 7.7 },
+        "image": {
+            "medium": "https://static.tvmaze.com/uploads/images/medium_landscape/489/1223253.jpg",
+            "original": "https://static.tvmaze.com/uploads/images/original_untouched/489/1223253.jpg"
+        },
+        "summary": "<p>After seeing families being nice to each other at a company picnic, Homer orders the Simpsons to a family therapist.</p>",
+        "_links": {
+            "self": { "href": "https://api.tvmaze.com/episodes/5001" },
+            "show": { "href": "https://api.tvmaze.com/shows/83" }
+        }
+    },
+    {
+        "id": 5002,
+        "url": "https://www.tvmaze.com/episodes/5002/the-simpsons-1x05-bart-the-general",
+        "name": "Bart the General",
+        "season": 1,
+        "number": 5,
+        "type": "regular",
+        "airdate": "1990-02-04",
+        "airtime": "20:00",
+        "airstamp": "1990-02-05T01:00:00+00:00",
+        "runtime": 30,
+        "rating": { "average": 8 },
+        "image": {
+            "medium": "https://static.tvmaze.com/uploads/images/medium_landscape/489/1223254.jpg",
+            "original": "https://static.tvmaze.com/uploads/images/original_untouched/489/1223254.jpg"
+        },
+        "summary": "<p>Terrorized by the school bully, Bart seeks counsel from Grandpa Simpson, who takes him to a warfare expert for basic training.</p>",
+        "_links": {
+            "self": { "href": "https://api.tvmaze.com/episodes/5002" },
+            "show": { "href": "https://api.tvmaze.com/shows/83" }
+        }
+    },
+    {
+        "id": 5003,
+        "url": "https://www.tvmaze.com/episodes/5003/the-simpsons-1x06-moaning-lisa",
+        "name": "Moaning Lisa",
+        "season": 1,
+        "number": 6,
+        "type": "regular",
+        "airdate": "1990-02-11",
+        "airtime": "20:00",
+        "airstamp": "1990-02-12T01:00:00+00:00",
+        "runtime": 30,
+        "rating": { "average": 7.8 },
+        "image": {
+            "medium": "https://static.tvmaze.com/uploads/images/medium_landscape/489/1223255.jpg",
+            "original": "https://static.tvmaze.com/uploads/images/original_untouched/489/1223255.jpg"
+        },
+        "summary": "<p>The meaning of life and second grade have Lisa playing the blues solo---until she jams with a kindred spirit; Homer seeks tutelage to beat Bart at video boxing. </p>",
+        "_links": {
+            "self": { "href": "https://api.tvmaze.com/episodes/5003" },
+            "show": { "href": "https://api.tvmaze.com/shows/83" }
+        }
+    }
+]
