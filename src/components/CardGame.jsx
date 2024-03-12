@@ -10,9 +10,22 @@ export function CardGame() {
   console.log({ currentCard });
   const [currentPack, setCurrentPack] = useState([...shuffledPack]);
   console.log({ currentPack });
+  const [previousCards, setPreviousCards] = useState([]);
 
   function clickedHigher() {
     console.log("Higher clicked");
+    flipNewCard();
+  }
+
+  function clickedLower() {
+    console.log("Lower clicked");
+    flipNewCard();
+  }
+
+  function flipNewCard() {
+    const newPreviousCards = [currentCard, ...previousCards];
+    setPreviousCards(newPreviousCards);
+
     const newCard = currentPack[0];
     const newPack = currentPack.slice(1);
     console.log({ newPack, currentPack });
@@ -20,22 +33,17 @@ export function CardGame() {
     setCurrentPack(newPack);
   }
 
-  function clickedLower() {
-    console.log("Lower clicked");
-  }
-
   return (
     <div>
       <button onClick={clickedHigher}>Higher!</button>
       <hr />
       {currentCard.id}
-      <br />
-      {currentPack[0].id}
-      {currentPack[1].id}
-      {currentPack[2].id}
-      {currentPack[3].id}
-      {currentPack[4].id}
-      <br></br>
+      <hr />
+      {currentPack.map((card) => card.id).join(", ")}
+      <hr />
+      {previousCards.map((card) => card.id).join(", ")}
+
+      <hr />
       <button onClick={clickedLower}>Lower!</button>
     </div>
   );
