@@ -6,6 +6,9 @@ export function CardGame() {
   console.log("cardgame rendered");
   const shuffledPack = _.sampleSize(cardDeckArray, 52);
   const initialFirstCard = shuffledPack.shift();
+  if (initialFirstCard === undefined) {
+    throw new Error("pack is empty!");
+  }
   const [currentCard, setCurrentCard] = useState(initialFirstCard);
   console.log({ currentCard });
   const [currentPack, setCurrentPack] = useState([...shuffledPack]);
@@ -82,10 +85,13 @@ export function CardGame() {
         Lower!
       </button>
       <hr />
+
       {prediction !== null && <p>You predicted {prediction}</p>}
+
       {winState === "defeat" && (
         <div>
           <h1>GAME OVER YOU LOSE</h1>
+          <button>Restart Game</button>
         </div>
       )}
       {winState === "victory" && (
