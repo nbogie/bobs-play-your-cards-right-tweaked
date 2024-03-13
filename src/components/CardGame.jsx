@@ -1,6 +1,9 @@
 import { useState } from "react";
 import cardDeckArray from "../data/carddeck";
 import _ from "lodash";
+import { WinState } from "./WinState";
+// eslint-disable-next-line no-unused-vars
+import React from "react";
 
 /**
  * @typedef {import("../data/carddeck").Card} Card
@@ -10,12 +13,24 @@ export function CardGame() {
   console.log("cardgame rendered");
 
   const [initialFirstCard, shuffledPack] = prepareCards();
+
   const [currentCard, setCurrentCard] = useState(initialFirstCard);
-  console.log({ currentCard });
   const [currentPack, setCurrentPack] = useState([...shuffledPack]);
-  console.log({ currentPack });
-  const [previousCards, setPreviousCards] = useState([]);
-  const [prediction, setPrediction] = useState(null);
+  /** @type {Card[]} */
+  const initialCards = [];
+
+  const [previousCards, setPreviousCards] = useState(initialCards);
+
+  /**
+   * @typedef {null | "higher" | "lower"} NullablePrediction
+   */
+  /**
+   * @returns {NullablePrediction}
+   */
+  function initialPrediction() {
+    return null;
+  }
+  const [prediction, setPrediction] = useState(initialPrediction());
 
   function clickedHigher() {
     console.log("Higher clicked");
@@ -55,8 +70,9 @@ export function CardGame() {
       return false;
     }
   }
+
   /**
-   * @returns {"victory" | "progressing" | "defeat"}
+   * @returns {WinState}
    */
   function calculateWinState() {
     if (calculatePlayerLost()) {
@@ -79,50 +95,58 @@ export function CardGame() {
   }
 
   return (
-    <div>
-      <button disabled={winState !== "progressing"} onClick={clickedHigher}>
-        Higher!
-      </button>
-      <hr />
-      Current card: {currentCard.id}
-      <hr />
-      <hr />
-      Previous card(s): {previousCards.map((card) => card.id).join(", ")}
-      <hr />
-      <button disabled={winState !== "progressing"} onClick={clickedLower}>
-        Lower!
-      </button>
-      <hr />
+    <div className="game">
+      <div className="gameRow">
+        <PreviousCardsView previousCards={previousCards} />
+
+        <div className="buttonsAndCurrentCard">
+          <div className="predictionButtons">
+            <button
+              disabled={winState !== "progressing"}
+              onClick={clickedHigher}
+            >
+              Higher!
+            </button>
+            <button
+              disabled={winState !== "progressing"}
+              onClick={clickedLower}
+            >
+              Lower!
+            </button>
+          </div>
+
+          <div className="highlitCardHolder">
+            <CardView card={currentCard} />
+          </div>
+        </div>
+      </div>
+
       {prediction !== null && <p>You predicted {prediction}</p>}
-      {winState === "defeat" && (
-        <div>
-          {currentCard.value === previousCards[0].value && (
-            <p>Nothing for a pair in this game!</p>
-          )}
-          <h1>GAME OVER YOU LOSE</h1>
-          <hr />
-          <button onClick={restartGame}>Restart Game</button>
-        </div>
-      )}
-      {winState === "victory" && (
-        <div>
-          <h2>🥳🥳🥳YOU SOMEHOW WON!🥳🥳🥳</h2>
-          <hr />
-          <button onClick={restartGame}>Restart Game</button>
-        </div>
-      )}
-      {winState === "progressing" && <div>Pick higher or lower!</div>}
-      <hr />
+
+      <WinState
+        restartGame={restartGame}
+        winState={winState}
+        currentCard={currentCard}
+        previousCards={previousCards}
+      />
+
       {winState === "progressing" && (
-        <p>This is round {previousCards.length + 1} / 5</p>
+        <RoundCounter currentRound={previousCards.length + 1} maxRounds={5} />
       )}
     </div>
+  );
+}
+function RoundCounter(props) {
+  return (
+    <p>
+      This is round {props.currentRound} / {props.maxRounds}
+    </p>
   );
 }
 
 /**
  *
- * @returns {Card, Card[]} the first card and the remaining shuffled cards
+ * @returns {[Card, Card[]]} the first card and the remaining shuffled cards
  */
 function prepareCards() {
   let shuffledPack = _.sampleSize(createNewDeck(), 52);
@@ -133,7 +157,20 @@ function prepareCards() {
   return [initialFirstCard, shuffledPack];
 }
 
-
 function createNewDeck() {
-     return [...cardDeckArray]
+  return [...cardDeckArray];
+}
+
+function CardView(props) {
+  return <div className={"card"}>{props.card.id}</div>;
+}
+
+function PreviousCardsView(props) {
+  return (
+    <div className={"cardList"}>
+      {[...props.previousCards].reverse().map((c) => (
+        <CardView key={c.id} card={c} />
+      ))}
+    </div>
+  );
 }
