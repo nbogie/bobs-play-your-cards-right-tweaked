@@ -2,13 +2,14 @@ import { useState } from "react";
 import cardDeckArray from "../data/carddeck";
 import _ from "lodash";
 
+/**
+ * @typedef {import("../data/carddeck").Card} Card
+ */
+
 export function CardGame() {
   console.log("cardgame rendered");
-  const shuffledPack = _.sampleSize(cardDeckArray, 52);
-  const initialFirstCard = shuffledPack.shift();
-  if (initialFirstCard === undefined) {
-    throw new Error("pack is empty!");
-  }
+
+  const [initialFirstCard, shuffledPack] = prepareCards();
   const [currentCard, setCurrentCard] = useState(initialFirstCard);
   console.log({ currentCard });
   const [currentPack, setCurrentPack] = useState([...shuffledPack]);
@@ -69,6 +70,15 @@ export function CardGame() {
 
   const winState = calculateWinState();
 
+
+  function restartGame() {
+    const [newInitialFirstCard, newShuffledPack] = prepareCards();
+    setCurrentCard(newInitialFirstCard);
+    setCurrentPack([...newShuffledPack]);
+    setPreviousCards([]);
+    setPrediction(null);
+  }
+
   return (
     <div>
       <button disabled={winState !== "progressing"} onClick={clickedHigher}>
@@ -93,15 +103,35 @@ export function CardGame() {
           )}
           <h1>GAME OVER YOU LOSE</h1>
           <hr />
-          <button>Restart Game</button>
+          <button onClick={restartGame}>Restart Game</button>
         </div>
       )}
       {winState === "victory" && (
         <div>
           <h2>🥳🥳🥳YOU SOMEHOW WON!🥳🥳🥳</h2>
+          <hr />
+          <button onClick={restartGame}>Restart Game</button>
         </div>
       )}
       {winState === "progressing" && <div>Pick higher or lower!</div>}
     </div>
   );
+}
+
+/**
+ *
+ * @returns {Card, Card[]} the first card and the remaining shuffled cards
+ */
+function prepareCards() {
+  let shuffledPack = _.sampleSize(createNewDeck(), 52);
+  const initialFirstCard = shuffledPack.shift();
+  if (initialFirstCard === undefined) {
+    throw new Error("pack is empty!");
+  }
+  return [initialFirstCard, shuffledPack];
+}
+
+
+function createNewDeck() {
+     return [...cardDeckArray]
 }

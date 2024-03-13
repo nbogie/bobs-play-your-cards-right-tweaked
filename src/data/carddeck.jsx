@@ -1,3 +1,15 @@
+/**
+ * Represents a card in the deck.
+ * @typedef {Object} Card
+ * @property {string} id - The unique identifier of the card.
+ * @property {number} value - The numerical value of the card.
+ * @property {"diamonds" | "hearts" | "clubs" | "spades"} suit - The suit of the card.
+ */
+
+/**
+ * An array of cards representing a standard deck of playing cards.
+ * @type {Card[]}
+ */
 const cardDeckArray = [
   { id: "2♦️", value: 2, suit: "diamonds" },
   { id: "3♦️", value: 3, suit: "diamonds" },
