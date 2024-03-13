@@ -114,6 +114,10 @@ export function CardGame() {
         </div>
       )}
       {winState === "progressing" && <div>Pick higher or lower!</div>}
+      <hr />
+      {winState === "progressing" && (
+        <p>This is round {previousCards.length + 1} / 3</p>
+      )}
     </div>
   );
 }
