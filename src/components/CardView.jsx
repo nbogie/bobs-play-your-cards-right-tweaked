@@ -1,4 +1,5 @@
 // eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 import React from "react";
 
 /**
@@ -10,5 +11,15 @@ import React from "react";
  * @param {{ card:Card }} props
  */
 export function CardView(props) {
-  return <div className={"card"}>{props.card.id}</div>;
+  return (
+    <motion.div
+      layout
+      layoutId={props.card.id}
+      transition={{ type: "spring", damping: 20 }}
+      key={props.card.id}
+      className={"card"}
+    >
+      {props.card.id}
+    </motion.div>
+  );
 }
