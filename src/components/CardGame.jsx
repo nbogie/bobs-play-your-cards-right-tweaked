@@ -86,7 +86,6 @@ export function CardGame() {
       <hr />
       Current card: {currentCard.id}
       <hr />
-      {/* {currentPack.map((card) => card.id).join(", ")} */}
       <hr />
       Previous card(s): {previousCards.map((card) => card.id).join(", ")}
       <hr />
