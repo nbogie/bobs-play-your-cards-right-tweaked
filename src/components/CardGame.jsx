@@ -49,7 +49,7 @@ export function CardGame() {
   }
 
   function allRoundsCompleted() {
-    if (previousCards.length >= 3) {
+    if (previousCards.length >= 5) {
       return true;
     } else {
       return false;
@@ -69,7 +69,6 @@ export function CardGame() {
   }
 
   const winState = calculateWinState();
-
 
   function restartGame() {
     const [newInitialFirstCard, newShuffledPack] = prepareCards();
@@ -116,7 +115,7 @@ export function CardGame() {
       {winState === "progressing" && <div>Pick higher or lower!</div>}
       <hr />
       {winState === "progressing" && (
-        <p>This is round {previousCards.length + 1} / 3</p>
+        <p>This is round {previousCards.length + 1} / 5</p>
       )}
     </div>
   );
