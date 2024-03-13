@@ -38,7 +38,7 @@ export function WinState(props) {
           <button onClick={restartGame}>Restart Game</button>
         </div>
       )}
-      {winState === "progressing" && <div>Pick higher or lower!</div>})
+      {winState === "progressing" && <div>Pick higher or lower!</div>}
     </>
   );
 }
