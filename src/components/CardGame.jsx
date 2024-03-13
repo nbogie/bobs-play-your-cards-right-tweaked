@@ -75,22 +75,21 @@ export function CardGame() {
         Higher!
       </button>
       <hr />
-      {currentCard.id}
+      Current card: {currentCard.id}
       <hr />
       {/* {currentPack.map((card) => card.id).join(", ")} */}
       <hr />
-      {previousCards.map((card) => card.id).join(", ")}
+      Previous card(s): {previousCards.map((card) => card.id).join(", ")}
       <hr />
       <button disabled={winState !== "progressing"} onClick={clickedLower}>
         Lower!
       </button>
       <hr />
-
       {prediction !== null && <p>You predicted {prediction}</p>}
-
       {winState === "defeat" && (
         <div>
           <h1>GAME OVER YOU LOSE</h1>
+          <hr />
           <button>Restart Game</button>
         </div>
       )}
