@@ -2,11 +2,26 @@
     box-sizing: border-box;
 }
 
+html {
+    /* todo: this is probably too big.  16px default */
+    font-size:26px;
+}
 body {
     background-color:gainsboro;
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: "Roboto", sans-serif;
+    
 }
-.weird {
-    border: 4px dashed lime;
+button {
+    font:inherit;
+}
+h1 {
+    font-family: "Abril Fatface", serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
 }
 
 .card {
@@ -27,6 +42,7 @@ body {
 .predictionButtons button {
     background: white;
     color:black;
+    padding:0.4rem;
 }
 .predictionButtons button:hover {
     background: pink;
@@ -48,6 +64,7 @@ body {
     display:flex;
     flex-direction: column;
     align-items: center;
+    gap:2rem;
     
 }
 .gameRow {
