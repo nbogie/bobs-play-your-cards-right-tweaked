@@ -1,12 +1,14 @@
-import { useState } from "react";
-import cardDeckArray from "../data/carddeck";
-import _ from "lodash";
-import { WinState } from "./WinState";
 // eslint-disable-next-line no-unused-vars
 import React from "react";
+import { useState } from "react";
+import { WinState } from "./WinState";
+import { prepareCards } from "../gameCore/cardDeck";
+import { CardView } from "./CardView";
+import { PreviousCardsView } from "./PreviousCardsView";
+import { RoundCounter } from "./RoundCounter";
 
 /**
- * @typedef {import("../data/carddeck").Card} Card
+ * @typedef {import("../gameCore/cardDeck").Card} Card
  */
 
 export function CardGame() {
@@ -133,44 +135,6 @@ export function CardGame() {
       {winState === "progressing" && (
         <RoundCounter currentRound={previousCards.length + 1} maxRounds={5} />
       )}
-    </div>
-  );
-}
-function RoundCounter(props) {
-  return (
-    <p>
-      This is round {props.currentRound} / {props.maxRounds}
-    </p>
-  );
-}
-
-/**
- *
- * @returns {[Card, Card[]]} the first card and the remaining shuffled cards
- */
-function prepareCards() {
-  let shuffledPack = _.sampleSize(createNewDeck(), 52);
-  const initialFirstCard = shuffledPack.shift();
-  if (initialFirstCard === undefined) {
-    throw new Error("pack is empty!");
-  }
-  return [initialFirstCard, shuffledPack];
-}
-
-function createNewDeck() {
-  return [...cardDeckArray];
-}
-
-function CardView(props) {
-  return <div className={"card"}>{props.card.id}</div>;
-}
-
-function PreviousCardsView(props) {
-  return (
-    <div className={"cardList"}>
-      {[...props.previousCards].reverse().map((c) => (
-        <CardView key={c.id} card={c} />
-      ))}
     </div>
   );
 }

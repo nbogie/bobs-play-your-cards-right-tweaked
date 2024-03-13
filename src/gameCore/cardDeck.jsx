@@ -1,3 +1,22 @@
+import { sampleSize } from "lodash";
+
+/**
+ *
+ * @returns {[Card, Card[]]} the first card and the remaining shuffled cards
+ */
+export function prepareCards() {
+  let shuffledPack = sampleSize(createNewDeck(), 52);
+  const initialFirstCard = shuffledPack.shift();
+  if (initialFirstCard === undefined) {
+    throw new Error("pack is empty!");
+  }
+  return [initialFirstCard, shuffledPack];
+}
+
+function createNewDeck() {
+  return [...cardDeckArray];
+}
+
 /**
  * Represents a card in the deck.
  * @typedef {Object} Card

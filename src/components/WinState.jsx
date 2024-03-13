@@ -5,7 +5,7 @@ import React from "react";
  */
 
 /**
- * @typedef {import("../data/carddeck").Card} Card
+ * @typedef {import("../gameCore/cardDeck").Card} Card
  */
 
 /**
