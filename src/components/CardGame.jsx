@@ -88,6 +88,9 @@ export function CardGame() {
       {prediction !== null && <p>You predicted {prediction}</p>}
       {winState === "defeat" && (
         <div>
+          {currentCard.value === previousCards[0].value && (
+            <p>Nothing for a pair in this game!</p>
+          )}
           <h1>GAME OVER YOU LOSE</h1>
           <hr />
           <button>Restart Game</button>
